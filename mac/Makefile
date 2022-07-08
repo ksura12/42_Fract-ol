@@ -6,10 +6,11 @@
 #    By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/07 09:24:12 by ksura             #+#    #+#              #
-#    Updated: 2022/07/08 09:20:14 by ksura            ###   ########.fr        #
+#    Updated: 2022/07/08 09:31:22 by ksura            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+NAME := fractol
 CC = gcc
 CFLAGS := -Wall -Werror -Wextra
 LIBRARIES = $(FT_LNK) 
@@ -20,13 +21,12 @@ OBJDIR := build/
 
 LIBFT = $(LIBFT_DIRECTORY)/libft.a
 LIBFT_DIRECTORY = ./libft
-FT_INC	= -I ./libft/
+FT_INC	= -I ./libft/ -I ./mlx/
 FT_LNK	= ./libft/libftprintf.a
 
 
 
-SRC := main.c errors.c swapping.c pushing.c rotating.c revrotating.c\
-	sorting_ruling.c sortfive.c sortbig.c
+SRC := main.c 
 
 OBJS = ${SRC:.c=.o}
 OBJECTS_PREF := $(addprefix $(OBJDIR), $(OBJS))
@@ -36,7 +36,7 @@ OBJECTS_PREF := $(addprefix $(OBJDIR), $(OBJS))
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJECTS_PREF) $(OBJDIR)
-	$(CC) $(FLAGS) $(OBJECTS_PREF) $(LIBRARIES) -I$(HEADER) -o $(NAME)
+	$(CC) $(FLAGS) $(OBJECTS_PREF) $(LIBRARIES) -I$(HEADER) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 	@echo "$(NAME) was created"
 	
 $(LIBFT):
