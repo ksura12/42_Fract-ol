@@ -6,7 +6,7 @@
 /*   By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 09:09:05 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/08 10:02:09 by ksura            ###   ########.fr       */
+/*   Updated: 2022/07/08 10:47:58 by ksura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,15 @@
 #include <GL/glut.h>
 #endif
 
-# define WI_WIDTH			1200
-# define WI_HEIGHT 			1200
+# define WIDTH			1200
+# define HEIGHT 		1200
+
+typedef struct	s_data {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}t_data;
 
 #endif
