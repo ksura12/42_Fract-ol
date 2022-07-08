@@ -6,7 +6,7 @@
 /*   By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 09:09:05 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/08 09:36:43 by ksura            ###   ########.fr       */
+/*   Updated: 2022/07/08 10:02:09 by ksura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,8 @@
 #else
 #include <GL/glut.h>
 #endif
+
+# define WI_WIDTH			1200
+# define WI_HEIGHT 			1200
 
 #endif
