@@ -6,7 +6,7 @@
 /*   By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 09:40:10 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/11 15:35:27 by ksura            ###   ########.fr       */
+/*   Updated: 2022/07/11 15:50:13 by ksura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,15 +51,19 @@ int render_backr(t_data *data)
 	
 	// if (data->win_ptr != NULL)
 	// {
+		// data->img = mlx_new_image(data->mlx_ptr, WIDTH, HEIGHT);
+		// data->addr = mlx_get_data_addr(data->img, &data->bits_per_pixel, &data->line_length, &data->endian);
 		c = 0;
-		while(c++ < HEIGHT)
+		while(c++ < WIDTH)
 		{
 			d = 0;
-			while( d++ < WIDTH)
+			while( d++ < HEIGHT - 1)
 			{
-				my_mlx_pixel_put(data, c, d , 0x000000FF);
+				my_mlx_pixel_put(data, c, d , 0x00FF00FF);
 			}
 		}
+	// 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img, 0, 0);
+	// mlx_destroy_image(data->mlx_ptr, data->img);
 	// }
 	return (0);
 }
@@ -79,7 +83,7 @@ int render(t_data *data)
 			d = 0;
 			while( d++ < 100)
 			{
-				my_mlx_pixel_put(data, WIDTH / 2 + c, HEIGHT / 2 + d , 0xAAFFAAFF);
+				my_mlx_pixel_put(data, WIDTH / 2 + c, HEIGHT / 2 + d , 0x00FFAAFF);
 			}
 		}
 	// 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img, 0, 0);
@@ -94,7 +98,7 @@ int put_img(t_data *data)
 	{
 		data->img = mlx_new_image(data->mlx_ptr, WIDTH, HEIGHT);
 		data->addr = mlx_get_data_addr(data->img, &data->bits_per_pixel, &data->line_length, &data->endian);
-		// render_backr(data);
+		render_backr(data);
 		render(data);
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img, 0, 0);
 		mlx_destroy_image(data->mlx_ptr, data->img);
