@@ -6,7 +6,7 @@
 /*   By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 09:40:10 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/10 11:09:38 by ksura            ###   ########.fr       */
+/*   Updated: 2022/07/11 13:15:42 by ksura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,15 @@
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 
-// void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
-// {
-// 	char	*dst;
-// 	int		offset;
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+{
+	char	*dst;
+	int		offset;
 	
-// 	offset = (y * data->line_length + x * (data->bits_per_pixel / 8));
-// 	dst = data->addr + offset;
-// 	*(unsigned int	*)dst = color;
-// }
+	offset = (y * data->line_length + x * (data->bits_per_pixel / 8));
+	dst = data->addr + offset;
+	*(unsigned int	*)dst = color;
+}
 
 int encode_rgb(uint8_t red, uint8_t green, uint8_t blue)
 {
@@ -46,8 +46,27 @@ int handle_keypress(int keysym, t_data *data)
 
 int render(t_data *data)
 {
+	int c;
+	int d;
+	
+	data->img = mlx_new_image(data->mlx_ptr, WIDTH, HEIGHT);
+	data->addr = mlx_get_data_addr(data->img, &data->bits_per_pixel, &data->line_length, &data->endian);
 	if (data->win_ptr != NULL)
-		mlx_pixel_put(data->mlx_ptr, data->win_ptr, WIDTH / 2 ,HEIGHT / 2 , 0xFF00FF);
+	{
+		c = 0;
+		while(c++ < 100)
+		{
+			d = 0;
+			while( d++ < 100)
+			{
+				my_mlx_pixel_put(data, WIDTH / 2 + c, HEIGHT / 2 + d , 0xFFAAFF);
+			}
+		}
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img, 0, 0);
+		mlx_destroy_image(data->mlx_ptr, data->img);
+		// free(free);
+	}
+		
 	return (0);
 }
 
@@ -71,6 +90,9 @@ int	main(int argc, char **argv)
 			return (MLX_ERROR);
 		}
 
+		// img.img = mlx_new_image(img.mlx_ptr, WIDTH, HEIGHT);
+		// img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
+		
 		// hooks //
 		mlx_loop_hook(img.mlx_ptr, &render, &img);
 		// mlx_hook(img.win_ptr, KeyPress, KeypressMask, &handle_keypress, &img);
@@ -81,14 +103,12 @@ int	main(int argc, char **argv)
 		// destroing window, exit code if
 		if (img.win_ptr == NULL)
 		{
-			mlx_destroy_image(img.mlx_ptr, img.img);
-			free(img.img);
 			free(img.mlx_ptr);
 			exit (0);
 		}
 		
 		
-		// img.img = mlx_new_image(img.mlx_ptr, WIDTH, HEIGHT);
+		
 		// img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
 		
 		// img.img = mlx_xpm_file_to_image(mlx, relative_path, &img_width, &img_height);
