@@ -6,7 +6,7 @@
 /*   By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 09:40:10 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/11 15:50:13 by ksura            ###   ########.fr       */
+/*   Updated: 2022/07/11 17:42:17 by ksura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int	*)dst = color;
 }
 
-int encode_rgb(uint8_t red, uint8_t green, uint8_t blue)
-{
-	return (red << 16 | green <<8 | blue);
-}
+// int encode_rgb(uint8_t red, uint8_t green, uint8_t blue)
+// {
+// 	return (red << 16 | green <<8 | blue);
+// }
 
 int handle_keypress(int keysym, t_data *data)
 {
@@ -83,7 +83,7 @@ int render(t_data *data)
 			d = 0;
 			while( d++ < 100)
 			{
-				my_mlx_pixel_put(data, WIDTH / 2 + c, HEIGHT / 2 + d , 0x00FFAAFF);
+				my_mlx_pixel_put(data, c, d , 0x00FFAAFF);
 			}
 		}
 	// 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img, 0, 0);
@@ -94,14 +94,18 @@ int render(t_data *data)
 
 int put_img(t_data *data)
 {
+	int x;
+	int y;
 		if (data->win_ptr != NULL)
 	{
-		data->img = mlx_new_image(data->mlx_ptr, WIDTH, HEIGHT);
-		data->addr = mlx_get_data_addr(data->img, &data->bits_per_pixel, &data->line_length, &data->endian);
-		render_backr(data);
-		render(data);
-		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img, 0, 0);
-		mlx_destroy_image(data->mlx_ptr, data->img);
+			data->img = mlx_new_image(data->mlx_ptr, WIDTH, HEIGHT);
+			data->addr = mlx_get_data_addr(data->img, &data->bits_per_pixel, &data->line_length, &data->endian);
+			render_backr(data);
+			render(data);
+			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img, 0, 0);
+			mlx_destroy_image(data->mlx_ptr, data->img);
+
+		
 		// free(data->img);
 	}
 	return (0);

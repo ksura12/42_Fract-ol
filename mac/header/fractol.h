@@ -6,7 +6,7 @@
 /*   By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 09:09:05 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/10 09:42:24 by ksura            ###   ########.fr       */
+/*   Updated: 2022/07/11 19:28:05 by ksura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,27 @@
 # define KEY_RIGHT			124
 # define KEY_C				8
 
+typedef struct s_clx
+{
+	double					re;
+	double					im;
+}							t_clx;
+
 typedef struct	s_data {
 	void	*mlx_ptr;
 	void	*win_ptr;
 	void	*img;
 	char	*addr;
+	t_clx	c;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
 }t_data;
 
+
+int create_trgb(int t, int r, int g, int b);
+int get_t(int trgb);
+int get_r(int trgb);
+int get_g(int trgb);
+int get_b(int trgb);
 #endif
