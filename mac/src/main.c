@@ -6,7 +6,7 @@
 /*   By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 09:40:10 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/11 13:15:42 by ksura            ###   ########.fr       */
+/*   Updated: 2022/07/11 15:35:27 by ksura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,33 +44,64 @@ int handle_keypress(int keysym, t_data *data)
 	return (0);
 }
 
+int render_backr(t_data *data)
+{
+	int c;
+	int d;
+	
+	// if (data->win_ptr != NULL)
+	// {
+		c = 0;
+		while(c++ < HEIGHT)
+		{
+			d = 0;
+			while( d++ < WIDTH)
+			{
+				my_mlx_pixel_put(data, c, d , 0x000000FF);
+			}
+		}
+	// }
+	return (0);
+}
+
 int render(t_data *data)
 {
 	int c;
 	int d;
 	
-	data->img = mlx_new_image(data->mlx_ptr, WIDTH, HEIGHT);
-	data->addr = mlx_get_data_addr(data->img, &data->bits_per_pixel, &data->line_length, &data->endian);
-	if (data->win_ptr != NULL)
-	{
+	// if (data->win_ptr != NULL)
+	// {
+		// data->img = mlx_new_image(data->mlx_ptr, WIDTH, HEIGHT);
+		// data->addr = mlx_get_data_addr(data->img, &data->bits_per_pixel, &data->line_length, &data->endian);
 		c = 0;
 		while(c++ < 100)
 		{
 			d = 0;
 			while( d++ < 100)
 			{
-				my_mlx_pixel_put(data, WIDTH / 2 + c, HEIGHT / 2 + d , 0xFFAAFF);
+				my_mlx_pixel_put(data, WIDTH / 2 + c, HEIGHT / 2 + d , 0xAAFFAAFF);
 			}
 		}
-		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img, 0, 0);
-		mlx_destroy_image(data->mlx_ptr, data->img);
-		// free(free);
-	}
-		
+	// 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img, 0, 0);
+	// mlx_destroy_image(data->mlx_ptr, data->img);
+	// }
 	return (0);
 }
 
-
+int put_img(t_data *data)
+{
+		if (data->win_ptr != NULL)
+	{
+		data->img = mlx_new_image(data->mlx_ptr, WIDTH, HEIGHT);
+		data->addr = mlx_get_data_addr(data->img, &data->bits_per_pixel, &data->line_length, &data->endian);
+		// render_backr(data);
+		render(data);
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img, 0, 0);
+		mlx_destroy_image(data->mlx_ptr, data->img);
+		// free(data->img);
+	}
+	return (0);
+}
 int	main(int argc, char **argv)
 {
 	t_data	img;
@@ -94,7 +125,7 @@ int	main(int argc, char **argv)
 		// img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
 		
 		// hooks //
-		mlx_loop_hook(img.mlx_ptr, &render, &img);
+		mlx_loop_hook(img.mlx_ptr, &put_img, &img);
 		// mlx_hook(img.win_ptr, KeyPress, KeypressMask, &handle_keypress, &img);
 		mlx_hook(img.win_ptr, 2, 0, handle_keypress, &img);
 		
