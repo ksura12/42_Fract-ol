@@ -6,7 +6,7 @@
 /*   By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 09:40:10 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/11 17:42:17 by ksura            ###   ########.fr       */
+/*   Updated: 2022/07/12 09:54:06 by ksura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,12 +96,25 @@ int put_img(t_data *data)
 {
 	int x;
 	int y;
+	double c_re;
+	double c_i;
 		if (data->win_ptr != NULL)
 	{
 			data->img = mlx_new_image(data->mlx_ptr, WIDTH, HEIGHT);
 			data->addr = mlx_get_data_addr(data->img, &data->bits_per_pixel, &data->line_length, &data->endian);
-			render_backr(data);
-			render(data);
+			x = -1;
+			while (++x < WIDTH)
+			{
+				y = -1;
+				while (++y < HEIGHT)
+				{
+					c_re = data->min_re + x * (data->max_re - data->min_re) / WIDTH;
+					c_i = data->min_i + y * (data->max_i - data->min_i) / HEIGHT;
+					mandelbrot(data, x, y, c_re, c_i);
+				}
+			}
+			// render_backr(data);
+			// render(data);
 			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img, 0, 0);
 			mlx_destroy_image(data->mlx_ptr, data->img);
 
@@ -122,6 +135,15 @@ int	main(int argc, char **argv)
 		img.mlx_ptr = mlx_init();
 		if (img.mlx_ptr == NULL)
 			return (MLX_ERROR);
+		// double min_re = -2.0;
+		// double max_re = 1.0;
+		// double min_i = -1.5;
+		// double max_i = min_i + (max_re - min_re) * HEIGHT / WIDTH;
+		img.min_re = -2.0;
+		img.max_re = 1.0;
+		img.min_i = -1.5;
+		img.max_i = img.min_i + (img.max_re - img.min_re) * HEIGHT / WIDTH;
+		
 		img.win_ptr = mlx_new_window(img.mlx_ptr, WIDTH, HEIGHT, "First Window");
 		if (img.win_ptr == NULL)
 		{

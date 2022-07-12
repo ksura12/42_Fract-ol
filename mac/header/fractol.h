@@ -6,7 +6,7 @@
 /*   By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 09:09:05 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/11 19:28:05 by ksura            ###   ########.fr       */
+/*   Updated: 2022/07/12 09:55:40 by ksura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 
 # define WIDTH			1200
 # define HEIGHT 		1200
+# define MAX_ITERATIONS	80
 
 #define MLX_ERROR 1
 
@@ -56,10 +57,25 @@ typedef struct	s_data {
 	void	*img;
 	char	*addr;
 	t_clx	c;
+	double	min_re;
+	double	max_re;
+	double	min_i;
+	double	max_i;
+	int		is_in_set;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
+	
 }t_data;
+
+typedef struct	s_fractol {
+	void	*mlx;
+	void	*win;
+	double	min_re;
+	double	max_re;
+	double	min_i;
+	double	max_i;
+}	t_fractol;
 
 
 int create_trgb(int t, int r, int g, int b);
@@ -67,4 +83,7 @@ int get_t(int trgb);
 int get_r(int trgb);
 int get_g(int trgb);
 int get_b(int trgb);
+
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void	mandelbrot(t_data *data, int x, int y, double c_re, double c_i);
 #endif
