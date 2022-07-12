@@ -6,7 +6,7 @@
 /*   By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 09:40:10 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/12 13:03:31 by ksura            ###   ########.fr       */
+/*   Updated: 2022/07/12 15:01:14 by ksura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,11 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 int handle_keypress(int keysym, t_data *data)
 {
+	double distance;
+	double zoom;
+	
+	distance = 0.05;
+	zoom = 
 	if (keysym == KEY_ESC)
 	{
 		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
@@ -41,6 +46,33 @@ int handle_keypress(int keysym, t_data *data)
 		free(data->mlx_ptr);
 		exit (0);
 	}
+	if (keysym == KEY_UP)
+	{
+		
+		data->min_re += (data->max_re - data->min_re) * distance;
+		data->max_re += (data->max_re - data->min_re) * distance;
+	}
+	if (keysym == KEY_DOWN)
+	{
+		
+		data->min_re -= (data->max_re - data->min_re) * distance;
+		data->max_re -= (data->max_re - data->min_re) * distance;
+	}
+	if (keysym == KEY_LEFT)
+	{
+		
+		data->min_i -= (data->max_i - data->min_i) * distance;
+		data->max_i -= (data->max_i - data->min_i) * distance;
+	}
+		if (keysym == KEY_RIGHT)
+	{
+		data->min_i += (data->max_i - data->min_i) * distance;
+		data->max_i += (data->max_i - data->min_i) * distance;
+	}
+	// if (keysym == KEY_PLUS)
+	// {
+	// 	data->min_re = data->max_i +zoom * (data->min_re - data->max_re)
+	// }
 	return (0);
 }
 

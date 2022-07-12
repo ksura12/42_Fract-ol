@@ -6,7 +6,7 @@
 /*   By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 09:09:05 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/12 13:27:26 by ksura            ###   ########.fr       */
+/*   Updated: 2022/07/12 14:52:00 by ksura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@
 # define KEY_ESC			53
 # define KEY_PLUS			24
 # define KEY_MINUS			27
-# define KEY_UP				126
-# define KEY_DOWN			125
-# define KEY_LEFT			123
-# define KEY_RIGHT			124
+# define KEY_UP				124
+# define KEY_DOWN			123
+# define KEY_LEFT			126
+# define KEY_RIGHT			125
 # define KEY_C				8
 
 typedef struct s_clx
