@@ -6,7 +6,7 @@
 /*   By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 09:09:05 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/12 12:40:54 by ksura            ###   ########.fr       */
+/*   Updated: 2022/07/12 13:27:26 by ksura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@
 #include <GL/glut.h>
 #endif
 
-# define WIDTH			1200
-# define HEIGHT 		1200
-# define MAX_ITERATIONS	255
+# define WIDTH			1400
+# define HEIGHT 		1400
+# define MAX_ITERATIONS	80
 
 
 #define MLX_ERROR 1

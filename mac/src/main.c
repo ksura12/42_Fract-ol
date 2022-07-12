@@ -6,7 +6,7 @@
 /*   By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 09:40:10 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/12 09:54:06 by ksura            ###   ########.fr       */
+/*   Updated: 2022/07/12 13:03:31 by ksura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,10 +139,14 @@ int	main(int argc, char **argv)
 		// double max_re = 1.0;
 		// double min_i = -1.5;
 		// double max_i = min_i + (max_re - min_re) * HEIGHT / WIDTH;
+		// img.min_re = -2.0;
+		// img.max_re = 2.0;
+		// img.min_i = -2;
 		img.min_re = -2.0;
 		img.max_re = 1.0;
 		img.min_i = -1.5;
 		img.max_i = img.min_i + (img.max_re - img.min_re) * HEIGHT / WIDTH;
+		// img.max_i = 1.5;
 		
 		img.win_ptr = mlx_new_window(img.mlx_ptr, WIDTH, HEIGHT, "First Window");
 		if (img.win_ptr == NULL)
