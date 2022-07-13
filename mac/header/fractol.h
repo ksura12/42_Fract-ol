@@ -6,7 +6,7 @@
 /*   By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 09:09:05 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/12 14:52:00 by ksura            ###   ########.fr       */
+/*   Updated: 2022/07/13 10:45:12 by ksura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,10 @@
 # define KEY_LEFT			126
 # define KEY_RIGHT			125
 # define KEY_C				8
+# define KEY_A				0
+# define KEY_S				1
+# define KEY_D				2
+# define KEY_W				13
 
 typedef struct s_clx
 {
@@ -62,7 +66,9 @@ typedef struct	s_data {
 	double	max_re;
 	double	min_i;
 	double	max_i;
-	double		is_in_set;
+	double	zoom;
+	double	shift;
+	double	is_in_set;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;

@@ -6,7 +6,7 @@
 /*   By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 09:40:10 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/12 15:01:14 by ksura            ###   ########.fr       */
+/*   Updated: 2022/07/13 10:48:31 by ksura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,8 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 int handle_keypress(int keysym, t_data *data)
 {
-	double distance;
-	double zoom;
-	
-	distance = 0.05;
-	zoom = 
+
+	// data->zoom = 1;
 	if (keysym == KEY_ESC)
 	{
 		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
@@ -48,31 +45,52 @@ int handle_keypress(int keysym, t_data *data)
 	}
 	if (keysym == KEY_UP)
 	{
-		
-		data->min_re += (data->max_re - data->min_re) * distance;
-		data->max_re += (data->max_re - data->min_re) * distance;
+		data->shift = 0.05;
+		data->min_re += (data->max_re - data->min_re) * data->shift;
+		data->max_re += (data->max_re - data->min_re) * data->shift;
 	}
 	if (keysym == KEY_DOWN)
 	{
-		
-		data->min_re -= (data->max_re - data->min_re) * distance;
-		data->max_re -= (data->max_re - data->min_re) * distance;
+		data->shift = 0.05;
+		data->min_re -= (data->max_re - data->min_re) * data->shift;
+		data->max_re -= (data->max_re - data->min_re) * data->shift;
 	}
 	if (keysym == KEY_LEFT)
 	{
-		
-		data->min_i -= (data->max_i - data->min_i) * distance;
-		data->max_i -= (data->max_i - data->min_i) * distance;
+		data->shift = 0.05;
+		data->min_i -= (data->max_i - data->min_i) * data->shift;
+		data->max_i -= (data->max_i - data->min_i) * data->shift;
 	}
 		if (keysym == KEY_RIGHT)
 	{
-		data->min_i += (data->max_i - data->min_i) * distance;
-		data->max_i += (data->max_i - data->min_i) * distance;
+		data->shift = 0.05;
+		data->min_i += (data->max_i - data->min_i) * data->shift;
+		data->max_i += (data->max_i - data->min_i) * data->shift;
 	}
-	// if (keysym == KEY_PLUS)
+	// if (keysym == KEY_SCROLL_UP)
 	// {
-	// 	data->min_re = data->max_i +zoom * (data->min_re - data->max_re)
+	// 	data->zoom += 0.1;
+	// 	data->min_re = data->max_re + data->zoom * (data->min_re - data->max_re);
+	// 	data->max_re = data->max_re + ((data->min_re - data->max_re) - data->zoom * (data->min_re - data->max_re)) / 2;
+	// 	// data->min_re = data->max_i + data->zoom * (data->min_re - data->max_re);
+	// 	// data->max_re = data->max_re + ((data->min_re - data->max_re) - data->zoom * (data->min_re - data->max_re)) / 2;
 	// }
+	if (keysym == KEY_S)
+	{
+		data->zoom = 2;
+		data->min_re = data->max_re + data->zoom * (data->min_re - data->max_re);
+		data->max_re = data->max_re + ((data->min_re - data->max_re) - data->zoom * (data->min_re - data->max_re)) / 2;
+		data->min_i = data->max_i + data->zoom * (data->min_i - data->max_i);
+		data->max_i = data->max_i + ((data->min_i - data->max_i) - data->zoom * (data->min_i - data->max_i)) / 2;
+	}
+	if (keysym == KEY_W)
+	{
+		data->zoom = 0.75;
+		data->min_re = data->max_re + data->zoom * (data->min_re - data->max_re);
+		data->max_re = data->max_re + ((data->min_re - data->max_re) - data->zoom * (data->min_re - data->max_re)) / 2;
+		data->min_i = data->max_i + data->zoom * (data->min_i - data->max_i);
+		data->max_i = data->max_i + ((data->min_i - data->max_i) - data->zoom * (data->min_i - data->max_i)) / 2;
+	}
 	return (0);
 }
 
