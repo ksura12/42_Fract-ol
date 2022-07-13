@@ -6,7 +6,7 @@
 /*   By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 09:40:10 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/13 10:48:31 by ksura            ###   ########.fr       */
+/*   Updated: 2022/07/13 16:20:18 by ksura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,36 +36,37 @@ int handle_keypress(int keysym, t_data *data)
 	// data->zoom = 1;
 	if (keysym == KEY_ESC)
 	{
-		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-		data->win_ptr = NULL;
-		mlx_destroy_image(data->mlx_ptr, data->img);
-		free(data->img);
-		free(data->mlx_ptr);
+		// mlx_destroy_window(data->mlx_ptr, data->win_ptr);
+		// data->win_ptr = NULL;
+		// mlx_destroy_image(data->mlx_ptr, data->img);
+		// free(data->img);
+		// free(data->mlx_ptr);
 		exit (0);
 	}
-	if (keysym == KEY_UP)
+	if (keysym == KEY_RIGHT)
 	{
 		data->shift = 0.05;
 		data->min_re += (data->max_re - data->min_re) * data->shift;
 		data->max_re += (data->max_re - data->min_re) * data->shift;
 	}
-	if (keysym == KEY_DOWN)
+	if (keysym == KEY_LEFT)
 	{
 		data->shift = 0.05;
 		data->min_re -= (data->max_re - data->min_re) * data->shift;
 		data->max_re -= (data->max_re - data->min_re) * data->shift;
 	}
-	if (keysym == KEY_LEFT)
+	if (keysym == KEY_DOWN)
 	{
 		data->shift = 0.05;
 		data->min_i -= (data->max_i - data->min_i) * data->shift;
 		data->max_i -= (data->max_i - data->min_i) * data->shift;
 	}
-		if (keysym == KEY_RIGHT)
+		if (keysym == KEY_UP)
 	{
 		data->shift = 0.05;
-		data->min_i += (data->max_i - data->min_i) * data->shift;
 		data->max_i += (data->max_i - data->min_i) * data->shift;
+		data->min_i += (data->max_i - data->min_i) * data->shift;
+		
 	}
 	// if (keysym == KEY_SCROLL_UP)
 	// {
@@ -79,7 +80,7 @@ int handle_keypress(int keysym, t_data *data)
 	{
 		data->zoom = 2;
 		data->min_re = data->max_re + data->zoom * (data->min_re - data->max_re);
-		data->max_re = data->max_re + ((data->min_re - data->max_re) - data->zoom * (data->min_re - data->max_re)) / 2;
+		data->max_re = data->max_re - data->zoom * (data->min_re - data->max_re)) / 2 + ((data->min_re - data->max_re);
 		data->min_i = data->max_i + data->zoom * (data->min_i - data->max_i);
 		data->max_i = data->max_i + ((data->min_i - data->max_i) - data->zoom * (data->min_i - data->max_i)) / 2;
 	}
@@ -179,7 +180,7 @@ int	main(int argc, char **argv)
 	// char	*relative_path = "./mandelbrot.xpm";
 	// int		img_width = 354;
 	// int		img_height = 337;
-
+	(void)argv;
 	if (argc >= 1)
 	{
 		img.mlx_ptr = mlx_init();
@@ -228,7 +229,6 @@ int	main(int argc, char **argv)
 		
 		// img.img = mlx_xpm_file_to_image(mlx, relative_path, &img_width, &img_height);
 		// ft_printf("%i\n", img.img);
-		ft_printf("%s\n", argv[1]);						
 		// mlx_put_image_to_window(img.mlx_ptr, img.mlx_win, img.img, 0, 0);
 		
 		return (0);

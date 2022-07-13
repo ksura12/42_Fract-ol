@@ -6,7 +6,7 @@
 /*   By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 09:09:05 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/13 10:45:12 by ksura            ###   ########.fr       */
+/*   Updated: 2022/07/13 13:39:43 by ksura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 
 # define WIDTH			1400
 # define HEIGHT 		1400
-# define MAX_ITERATIONS	80
+# define MAX_ITERATIONS	40
 
 
 #define MLX_ERROR 1
@@ -40,10 +40,10 @@
 # define KEY_ESC			53
 # define KEY_PLUS			24
 # define KEY_MINUS			27
-# define KEY_UP				124
-# define KEY_DOWN			123
-# define KEY_LEFT			126
-# define KEY_RIGHT			125
+# define KEY_UP				126
+# define KEY_DOWN			125
+# define KEY_LEFT			123
+# define KEY_RIGHT			124
 # define KEY_C				8
 # define KEY_A				0
 # define KEY_S				1

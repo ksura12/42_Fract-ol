@@ -6,7 +6,7 @@
 /*   By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 18:47:34 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/12 13:28:42 by ksura            ###   ########.fr       */
+/*   Updated: 2022/07/13 13:26:09 by ksura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,9 @@ void mandelbrot(t_data *data, int x, int y, double c_re, double c_i)
 	}
 	if (n == MAX_ITERATIONS)
 		my_mlx_pixel_put(data, x, y , create_trgb(0, 0, 0, 0));
+	else if (n < MAX_ITERATIONS / 2)
+		my_mlx_pixel_put(data, x, y , create_trgb(0, 0, (255 * n / MAX_ITERATIONS / 2), (255 * n / MAX_ITERATIONS / 2)));
 	else
-		my_mlx_pixel_put(data, x, y , create_trgb(0, 0, (255 * n / MAX_ITERATIONS), (255 * n / MAX_ITERATIONS)));
-	// else
+		my_mlx_pixel_put(data, x, y , create_trgb(0, 0, 255 - (255 * (n - 39) / MAX_ITERATIONS / 2), 255 - (255 * n / MAX_ITERATIONS / 2)));
 	// 	my_mlx_pixel_put(data, x, y , create_trgb(0, (255 * n / MAX_ITERATIONS / 2), 255, 255));
 }
