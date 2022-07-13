@@ -6,7 +6,7 @@
 /*   By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 09:40:10 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/13 16:20:18 by ksura            ###   ########.fr       */
+/*   Updated: 2022/07/13 17:09:46 by ksura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,45 +44,23 @@ int handle_keypress(int keysym, t_data *data)
 		exit (0);
 	}
 	if (keysym == KEY_RIGHT)
-	{
-		data->shift = 0.05;
-		data->min_re += (data->max_re - data->min_re) * data->shift;
-		data->max_re += (data->max_re - data->min_re) * data->shift;
-	}
+		move_right(data);
 	if (keysym == KEY_LEFT)
-	{
-		data->shift = 0.05;
-		data->min_re -= (data->max_re - data->min_re) * data->shift;
-		data->max_re -= (data->max_re - data->min_re) * data->shift;
-	}
+		move_left(data);
 	if (keysym == KEY_DOWN)
-	{
-		data->shift = 0.05;
-		data->min_i -= (data->max_i - data->min_i) * data->shift;
-		data->max_i -= (data->max_i - data->min_i) * data->shift;
-	}
-		if (keysym == KEY_UP)
-	{
-		data->shift = 0.05;
-		data->max_i += (data->max_i - data->min_i) * data->shift;
-		data->min_i += (data->max_i - data->min_i) * data->shift;
-		
-	}
-	// if (keysym == KEY_SCROLL_UP)
-	// {
-	// 	data->zoom += 0.1;
-	// 	data->min_re = data->max_re + data->zoom * (data->min_re - data->max_re);
-	// 	data->max_re = data->max_re + ((data->min_re - data->max_re) - data->zoom * (data->min_re - data->max_re)) / 2;
-	// 	// data->min_re = data->max_i + data->zoom * (data->min_re - data->max_re);
-	// 	// data->max_re = data->max_re + ((data->min_re - data->max_re) - data->zoom * (data->min_re - data->max_re)) / 2;
-	// }
+		move_down(data);
+	if (keysym == KEY_UP)
+		move_up(data);
 	if (keysym == KEY_S)
 	{
 		data->zoom = 2;
+		// mlx_mouse_move(data->win_ptr, 0, 0);
+		
 		data->min_re = data->max_re + data->zoom * (data->min_re - data->max_re);
-		data->max_re = data->max_re - data->zoom * (data->min_re - data->max_re)) / 2 + ((data->min_re - data->max_re);
+		data->max_re = data->max_re - data->zoom * (data->min_re - data->max_re) / 2 + (data->min_re - data->max_re);
 		data->min_i = data->max_i + data->zoom * (data->min_i - data->max_i);
 		data->max_i = data->max_i + ((data->min_i - data->max_i) - data->zoom * (data->min_i - data->max_i)) / 2;
+		// move_to_mouse(data);
 	}
 	if (keysym == KEY_W)
 	{

@@ -6,7 +6,7 @@
 #    By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/07 09:24:12 by ksura             #+#    #+#              #
-#    Updated: 2022/07/12 10:30:48 by ksura            ###   ########.fr        #
+#    Updated: 2022/07/13 16:36:29 by ksura            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ FT_LNK	= ./libft/libftprintf.a
 
 
 
-SRC := main.c mandelbrot.c colors.c
+SRC := main.c mandelbrot.c colors.c moves.c
 
 OBJS = ${SRC:.c=.o}
 OBJECTS_PREF := $(addprefix $(OBJDIR), $(OBJS))
