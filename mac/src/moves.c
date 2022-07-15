@@ -6,7 +6,7 @@
 /*   By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 16:35:04 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/15 10:01:17 by ksura            ###   ########.fr       */
+/*   Updated: 2022/07/15 10:16:54 by ksura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void move_to_mouse(int x, int y, t_data *data)
 {
 	x -= WIDTH / 2;
-	y -= -HEIGHT / 2;
+	y -= HEIGHT / 2;
 	if (x < 0)
 		move_left(data);
 	else if (x > 0)

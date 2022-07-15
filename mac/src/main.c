@@ -6,7 +6,7 @@
 /*   By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 09:40:10 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/15 09:58:11 by ksura            ###   ########.fr       */
+/*   Updated: 2022/07/15 10:20:25 by ksura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,13 +69,25 @@ int mouse_events(int mouse_code, int x, int y, t_data *data)
 {
 	if (mouse_code == KEY_LEFT_CLICK)
 	{
-		data->zoom = 0.75;
-		zoom(data);
+		// data->zoom = 0.75;
+		// zoom(data);
 		move_to_mouse(x, y, data);
 	}
 	if (mouse_code == KEY_RIGHT_CLICK)
 	{
-		data->zoom = 2;
+		// data->zoom = 2;
+		// zoom(data);
+		move_to_mouse(x, y, data);
+	}
+	if (mouse_code == KEY_SCROLL_DOWN)
+	{
+		data->zoom = 1.5;
+		zoom(data);
+		move_to_mouse(x, y, data);
+	}
+		if (mouse_code == KEY_SCROLL_UP)
+	{
+		data->zoom = 0.5;
 		zoom(data);
 		move_to_mouse(x, y, data);
 	}
