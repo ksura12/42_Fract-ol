@@ -6,7 +6,7 @@
 /*   By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 09:09:05 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/13 16:52:37 by ksura            ###   ########.fr       */
+/*   Updated: 2022/07/15 09:53:10 by ksura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@
 
 #define MLX_ERROR 1
 
+# define KEY_LEFT_CLICK		1
+# define KEY_RIGHT_CLICK	2
 # define KEY_SCROLL_UP		4
 # define KEY_SCROLL_DOWN	5
 # define KEY_SPACE			49
@@ -101,5 +103,6 @@ void move_left(t_data *data);
 void move_right(t_data *data);
 void move_down(t_data *data);
 void move_up(t_data *data);
-void move_to_mouse(t_data *data);
+void move_to_mouse(int x, int y, t_data *data);
+void zoom(t_data *data);
 #endif

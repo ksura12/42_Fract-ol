@@ -6,7 +6,7 @@
 /*   By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 09:40:10 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/13 17:09:46 by ksura            ###   ########.fr       */
+/*   Updated: 2022/07/15 09:58:11 by ksura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,21 +54,30 @@ int handle_keypress(int keysym, t_data *data)
 	if (keysym == KEY_S)
 	{
 		data->zoom = 2;
-		// mlx_mouse_move(data->win_ptr, 0, 0);
-		
-		data->min_re = data->max_re + data->zoom * (data->min_re - data->max_re);
-		data->max_re = data->max_re - data->zoom * (data->min_re - data->max_re) / 2 + (data->min_re - data->max_re);
-		data->min_i = data->max_i + data->zoom * (data->min_i - data->max_i);
-		data->max_i = data->max_i + ((data->min_i - data->max_i) - data->zoom * (data->min_i - data->max_i)) / 2;
+		zoom(data);
 		// move_to_mouse(data);
 	}
 	if (keysym == KEY_W)
 	{
 		data->zoom = 0.75;
-		data->min_re = data->max_re + data->zoom * (data->min_re - data->max_re);
-		data->max_re = data->max_re + ((data->min_re - data->max_re) - data->zoom * (data->min_re - data->max_re)) / 2;
-		data->min_i = data->max_i + data->zoom * (data->min_i - data->max_i);
-		data->max_i = data->max_i + ((data->min_i - data->max_i) - data->zoom * (data->min_i - data->max_i)) / 2;
+		zoom(data);
+	}
+	return (0);
+}
+
+int mouse_events(int mouse_code, int x, int y, t_data *data)
+{
+	if (mouse_code == KEY_LEFT_CLICK)
+	{
+		data->zoom = 0.75;
+		zoom(data);
+		move_to_mouse(x, y, data);
+	}
+	if (mouse_code == KEY_RIGHT_CLICK)
+	{
+		data->zoom = 2;
+		zoom(data);
+		move_to_mouse(x, y, data);
 	}
 	return (0);
 }
@@ -142,8 +151,6 @@ int put_img(t_data *data)
 					mandelbrot(data, x, y, c_re, c_i);
 				}
 			}
-			// render_backr(data);
-			// render(data);
 			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img, 0, 0);
 			mlx_destroy_image(data->mlx_ptr, data->img);
 
@@ -164,34 +171,22 @@ int	main(int argc, char **argv)
 		img.mlx_ptr = mlx_init();
 		if (img.mlx_ptr == NULL)
 			return (MLX_ERROR);
-		// double min_re = -2.0;
-		// double max_re = 1.0;
-		// double min_i = -1.5;
-		// double max_i = min_i + (max_re - min_re) * HEIGHT / WIDTH;
-		// img.min_re = -2.0;
-		// img.max_re = 2.0;
-		// img.min_i = -2;
 		img.min_re = -2.0;
 		img.max_re = 1.0;
 		img.min_i = -1.5;
 		img.max_i = img.min_i + (img.max_re - img.min_re) * HEIGHT / WIDTH;
-		// img.max_i = 1.5;
-		
 		img.win_ptr = mlx_new_window(img.mlx_ptr, WIDTH, HEIGHT, "First Window");
 		if (img.win_ptr == NULL)
 		{
 			free(img.win_ptr);
 			return (MLX_ERROR);
 		}
-
-		// img.img = mlx_new_image(img.mlx_ptr, WIDTH, HEIGHT);
-		// img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
 		
 		// hooks //
 		mlx_loop_hook(img.mlx_ptr, &put_img, &img);
 		// mlx_hook(img.win_ptr, KeyPress, KeypressMask, &handle_keypress, &img);
 		mlx_hook(img.win_ptr, 2, 0, handle_keypress, &img);
-		
+		mlx_mouse_hook(img.win_ptr, mouse_events, &img);
 		mlx_loop(img.mlx_ptr);
 		
 		// destroing window, exit code if
