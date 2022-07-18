@@ -6,7 +6,7 @@
 /*   By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 10:24:16 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/18 17:29:47 by ksura            ###   ########.fr       */
+/*   Updated: 2022/07/18 18:49:54 by ksura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 void color_chan(t_data	*data)
 {
 	data->color_chan += 1;
-	if (data->color_chan > 3)
+	if (data->color_chan > 7)
 		data->color_chan = 1;
 }
 void	my_mlx_pixel_put(t_data *data, int x, int y, int n)
@@ -54,7 +54,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int n)
 		else
 			color = create_trgb(0,(255 * n / data->max_ite / 2), (255 * n / data->max_ite / 2), (255 * n / data->max_ite / 2));
 	}
-	else
+	else if (data->color_chan == 3)
 	{
 		if (n == data->max_ite)
 			color = create_trgb(0, 0, 0, 0);
@@ -62,6 +62,36 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int n)
 		// 	color = create_trgb(0, 255 -(255 * n / data->max_ite / 2), 0, (255 * n / data->max_ite / 2));
 		else
 			color = create_trgb(0, 0, 255 -(255 * n / data->max_ite / 2), 255 -(255 * n / data->max_ite / 2));
+	}
+	else if (data->color_chan == 4)
+	{
+		if (n == data->max_ite)
+			color = create_trgb(0, 0, 0, 0);
+		else if (n < data->max_ite / 2)
+			color = create_trgb(0, (255 * n / data->max_ite / 2), (255 * n / data->max_ite / 2), 255);
+		else
+			color = create_trgb(0, 0, 255 -(255 * n / data->max_ite / 2), 255 -(255 * n / data->max_ite / 2));
+	}
+	else if (data->color_chan == 5)
+	{
+		if (n == data->max_ite)
+			color = create_trgb(0, 0, 0, 0);
+		else if (n < data->max_ite / 2)
+			color = create_trgb(0, (255 * n / data->max_ite / 2), (255 * n / data->max_ite / 2), 0);
+		else
+			color = create_trgb(0, 255 - (255 * n / data->max_ite / 2), 255 - (255 * n / data->max_ite / 2), 255);
+	}
+	else
+	{
+		if (n == data->max_ite)
+			color = create_trgb(0, 0, 0, 0);
+		else
+			color = create_trgb(0
+			, 127.5 * (cos((double)n) + 1)
+			, 127.5 * (sin((double)n) +1)
+			, 127.5 * (1 - cos((double)n)));
+		// else
+		// 	color = create_trgb(0, 255 -(255 * n / data->max_ite / 2), 155 - (155 * n / data->max_ite / 3), 100 - (100 * n / data->max_ite / 4));
 	}
 	*(unsigned int	*)dst = color;
 }
