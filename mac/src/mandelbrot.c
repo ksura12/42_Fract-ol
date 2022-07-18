@@ -6,7 +6,7 @@
 /*   By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 18:47:34 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/17 21:52:42 by ksura            ###   ########.fr       */
+/*   Updated: 2022/07/18 14:16:50 by ksura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void mandelbrot(t_data *data, int x, int y, double c_re, double c_i)
 	z_i = 0;
 	n = -1;
 	data->is_in_set = 1.0;
-	while (++n < MAX_ITERATIONS)
+	while (++n < data->max_ite)
 	{
 		if ((z_re * z_re + z_i * z_i) > 4.0)
 		{
@@ -44,11 +44,11 @@ void mandelbrot(t_data *data, int x, int y, double c_re, double c_i)
 		z_re = z_re *z_re - z_i * z_i + c_re;
 		z_i = tmp;
 	}
-	if (n == MAX_ITERATIONS)
+	if (n == data->max_ite)
 		my_mlx_pixel_put(data, x, y , create_trgb(0, 0, 0, 0));
-	else if (n < MAX_ITERATIONS / 2)
-		my_mlx_pixel_put(data, x, y , create_trgb(0, 0, (255 * n / MAX_ITERATIONS / 2), (255 * n / MAX_ITERATIONS / 2)));
+	else if (n < data->max_ite / 2)
+		my_mlx_pixel_put(data, x, y , create_trgb(0, 0, (255 * n / data->max_ite / 2), (255 * n / data->max_ite / 2)));
 	else
-		my_mlx_pixel_put(data, x, y , create_trgb(0, 0, 255 - (255 * (n - 39) / MAX_ITERATIONS / 2), 255 - (255 * n / MAX_ITERATIONS / 2)));
+		my_mlx_pixel_put(data, x, y , create_trgb(0, 0, 255 - (255 * (n - 39) / data->max_ite / 2), 255 - (255 * n / data->max_ite / 2)));
 	// 	my_mlx_pixel_put(data, x, y , create_trgb(0, (255 * n / MAX_ITERATIONS / 2), 255, 255));
 }

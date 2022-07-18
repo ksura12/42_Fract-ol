@@ -6,7 +6,7 @@
 /*   By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 09:09:05 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/18 11:15:50 by ksura            ###   ########.fr       */
+/*   Updated: 2022/07/18 14:15:16 by ksura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 
 # define WIDTH			1400
 # define HEIGHT 		1400
-# define MAX_ITERATIONS	40
+# define MAX_ITERATIONS	80
 
 
 #define MLX_ERROR 1
@@ -77,6 +77,7 @@ typedef struct	s_data {
 	int		line_length;
 	int		endian;
 	int		fractol;
+	int		max_ite;
 	
 }t_data;
 

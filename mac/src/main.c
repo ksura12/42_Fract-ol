@@ -6,7 +6,7 @@
 /*   By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 09:40:10 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/18 12:11:55 by ksura            ###   ########.fr       */
+/*   Updated: 2022/07/18 14:19:19 by ksura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,6 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int	*)dst = color;
 }
 
-// int encode_rgb(uint8_t red, uint8_t green, uint8_t blue)
-// {
-// 	return (red << 16 | green <<8 | blue);
-// }
-
 int handle_keypress(int keysym, t_data *data)
 {
 	if (keysym == KEY_ESC)
@@ -39,6 +34,10 @@ int handle_keypress(int keysym, t_data *data)
 		move_down(data);
 	if (keysym == KEY_UP)
 		move_up(data);
+	if (keysym == KEY_W)
+		data->max_ite += 10;
+	if (keysym == KEY_S)
+		data->max_ite -= 10;
 	return (0);
 }
 
@@ -62,6 +61,14 @@ int mouse_events(int mouse_code, int x, int y, t_data *data)
 	}
 	return (0);
 }
+void	value_start(t_data *data)
+{
+	data->max_ite = 80;
+	data->min_re = -2.0;
+	data->max_re = 1.0;
+	data->min_i = -1.5;
+	data->max_i = data->min_i + (data->max_re - data->min_re) * HEIGHT / WIDTH;
+}
 
 t_data checkinput(int argc, char **argv, t_data *data)
 {
@@ -81,6 +88,7 @@ t_data checkinput(int argc, char **argv, t_data *data)
 	else
 	{
 		data->mlx_ptr = mlx_init();
+		value_start(data);
 		if (data->mlx_ptr == NULL)
 			exit (1);
 			// return (MLX_ERROR);
@@ -93,13 +101,18 @@ t_data checkinput(int argc, char **argv, t_data *data)
 			ft_printf("---check your input---\n");
 			ft_printf("---please choose a set---\n");
 			ft_printf("-m	Mandelbrot\n-j	Julia\n");
-			exit (1);
+			exit (0);
 		}
 			
 	}
 	return (*data);
 }
 
+int close_win (void *data)
+{
+	(void)data;
+	exit(0);
+}
 
 int	main(int argc, char **argv)
 {
@@ -110,11 +123,7 @@ int	main(int argc, char **argv)
 	if (argc >= 1)
 	{
 		img = checkinput(argc, argv, &img);
-		img.min_re = -2.0;
-		img.max_re = 1.0;
-		img.min_i = -1.5;
-		img.max_i = img.min_i + (img.max_re - img.min_re) * HEIGHT / WIDTH;
-		img.win_ptr = mlx_new_window(img.mlx_ptr, WIDTH, HEIGHT, "First Window");
+		img.win_ptr = mlx_new_window(img.mlx_ptr, WIDTH + 350, HEIGHT, "First Window");
 		if (img.win_ptr == NULL)
 		{
 			free(img.win_ptr);
@@ -124,6 +133,7 @@ int	main(int argc, char **argv)
 		// hooks //
 		mlx_loop_hook(img.mlx_ptr, &put_img, &img);
 		mlx_hook(img.win_ptr, 2, 0, handle_keypress, &img);
+		mlx_hook(img.win_ptr, 17, 0, close_win, &img);
 		mlx_mouse_hook(img.win_ptr, mouse_events, &img);
 		mlx_loop(img.mlx_ptr);
 		
