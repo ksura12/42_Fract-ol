@@ -6,7 +6,7 @@
 /*   By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 09:40:10 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/18 10:47:48 by ksura            ###   ########.fr       */
+/*   Updated: 2022/07/18 12:11:55 by ksura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,10 @@ int mouse_events(int mouse_code, int x, int y, t_data *data)
 	return (0);
 }
 
-void checkinput(int argc, char * argv)
+t_data checkinput(int argc, char **argv, t_data *data)
 {
+	// t_data	img;
+	
 	if (argc == 1)
 	{
 		ft_printf("--- too few arguments, please choose a set ---\n");
@@ -76,9 +78,26 @@ void checkinput(int argc, char * argv)
 		ft_printf("--- too many arguments ---\n");
 		exit (0);
 	}
-		
-
-	(void)argv;
+	else
+	{
+		data->mlx_ptr = mlx_init();
+		if (data->mlx_ptr == NULL)
+			exit (1);
+			// return (MLX_ERROR);
+		if (ft_strequ(argv[1], "-m"))
+			data->fractol = 1;
+		else if (ft_strequ(argv[1], "-j"))
+			data->fractol = 2;
+		else
+		{
+			ft_printf("---check your input---\n");
+			ft_printf("---please choose a set---\n");
+			ft_printf("-m	Mandelbrot\n-j	Julia\n");
+			exit (1);
+		}
+			
+	}
+	return (*data);
 }
 
 
@@ -90,10 +109,7 @@ int	main(int argc, char **argv)
 	
 	if (argc >= 1)
 	{
-		checkinput(argc, argv[1]);
-		img.mlx_ptr = mlx_init();
-		if (img.mlx_ptr == NULL)
-			return (MLX_ERROR);
+		img = checkinput(argc, argv, &img);
 		img.min_re = -2.0;
 		img.max_re = 1.0;
 		img.min_i = -1.5;
