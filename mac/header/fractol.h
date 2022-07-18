@@ -6,7 +6,7 @@
 /*   By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 09:09:05 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/15 09:53:10 by ksura            ###   ########.fr       */
+/*   Updated: 2022/07/18 10:25:41 by ksura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ int get_g(int trgb);
 int get_b(int trgb);
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+int		put_img(t_data *data);
 void	mandelbrot(t_data *data, int x, int y, double c_re, double c_i);
 
 //moves
@@ -104,5 +105,5 @@ void move_right(t_data *data);
 void move_down(t_data *data);
 void move_up(t_data *data);
 void move_to_mouse(int x, int y, t_data *data);
-void zoom(t_data *data);
+void zoom(t_data *data, int x, int y);
 #endif

@@ -6,7 +6,7 @@
 /*   By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 18:47:34 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/13 13:26:09 by ksura            ###   ########.fr       */
+/*   Updated: 2022/07/17 21:52:42 by ksura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void mandelbrot(t_data *data, int x, int y, double c_re, double c_i)
 	double	z_re;
 	double	z_i;
 	double	tmp;
+	// int MAX_ITERATIONS;
 
 	z_re = 0;
 	z_i = 0;
