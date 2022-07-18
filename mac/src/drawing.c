@@ -6,11 +6,30 @@
 /*   By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 10:24:16 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/18 14:21:39 by ksura            ###   ########.fr       */
+/*   Updated: 2022/07/18 15:10:41 by ksura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../header/fractol.h"
+
+// void	my_mlx_pixel_put(t_data *data, int x, int y, int color, int n)
+void	my_mlx_pixel_put(t_data *data, int x, int y, int n)
+{
+	char	*dst;
+	int		offset;
+	int		color;
+	
+	offset = (y * data->line_length + x * (data->bits_per_pixel / 8));
+	dst = data->addr + offset;
+	if (n == data->max_ite)
+		color = create_trgb(0, 0, 0, 0);
+	else if (n < data->max_ite / 2)
+		color = create_trgb(0, (255 * n / data->max_ite / 2), 0, (255 * n / data->max_ite / 2));
+	else
+		color = create_trgb(0, 255, (255 * (n - data->max_ite /2) / data->max_ite/ 2), 255);
+	*(unsigned int	*)dst = color;
+}
+
 
 static void	fractol(t_data *data, int x, int y, double c_re, double c_i)
 {

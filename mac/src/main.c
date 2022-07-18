@@ -6,21 +6,21 @@
 /*   By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 09:40:10 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/18 14:19:19 by ksura            ###   ########.fr       */
+/*   Updated: 2022/07/18 14:58:09 by ksura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../header/fractol.h"
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
-{
-	char	*dst;
-	int		offset;
+// void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+// {
+// 	char	*dst;
+// 	int		offset;
 	
-	offset = (y * data->line_length + x * (data->bits_per_pixel / 8));
-	dst = data->addr + offset;
-	*(unsigned int	*)dst = color;
-}
+// 	offset = (y * data->line_length + x * (data->bits_per_pixel / 8));
+// 	dst = data->addr + offset;
+// 	*(unsigned int	*)dst = color;
+// }
 
 int handle_keypress(int keysym, t_data *data)
 {
