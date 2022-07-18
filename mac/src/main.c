@@ -6,7 +6,7 @@
 /*   By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 09:40:10 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/18 14:58:09 by ksura            ###   ########.fr       */
+/*   Updated: 2022/07/18 17:27:51 by ksura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ int handle_keypress(int keysym, t_data *data)
 		data->max_ite += 10;
 	if (keysym == KEY_S)
 		data->max_ite -= 10;
+	if (keysym == KEY_D)
+		color_chan(data);
 	return (0);
 }
 
@@ -68,6 +70,7 @@ void	value_start(t_data *data)
 	data->max_re = 1.0;
 	data->min_i = -1.5;
 	data->max_i = data->min_i + (data->max_re - data->min_re) * HEIGHT / WIDTH;
+	data->color_chan = 1;
 }
 
 t_data checkinput(int argc, char **argv, t_data *data)

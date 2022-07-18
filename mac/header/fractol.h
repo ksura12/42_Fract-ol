@@ -6,7 +6,7 @@
 /*   By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 09:09:05 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/18 14:15:16 by ksura            ###   ########.fr       */
+/*   Updated: 2022/07/18 17:28:17 by ksura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ typedef struct	s_data {
 	int		endian;
 	int		fractol;
 	int		max_ite;
+	int		color_chan;
 	
 }t_data;
 
@@ -102,10 +103,11 @@ int		put_img(t_data *data);
 void	mandelbrot(t_data *data, int x, int y, double c_re, double c_i);
 
 //moves
-void move_left(t_data *data);
-void move_right(t_data *data);
-void move_down(t_data *data);
-void move_up(t_data *data);
-void move_to_mouse(int x, int y, t_data *data);
-void zoom(t_data *data, int x, int y);
+void	move_left(t_data *data);
+void	move_right(t_data *data);
+void	move_down(t_data *data);
+void	move_up(t_data *data);
+void	move_to_mouse(int x, int y, t_data *data);
+void	zoom(t_data *data, int x, int y);
+void	color_chan(t_data	*data);
 #endif

@@ -6,13 +6,20 @@
 /*   By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 10:24:16 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/18 15:10:41 by ksura            ###   ########.fr       */
+/*   Updated: 2022/07/18 17:29:47 by ksura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../header/fractol.h"
 
 // void	my_mlx_pixel_put(t_data *data, int x, int y, int color, int n)
+
+void color_chan(t_data	*data)
+{
+	data->color_chan += 1;
+	if (data->color_chan > 3)
+		data->color_chan = 1;
+}
 void	my_mlx_pixel_put(t_data *data, int x, int y, int n)
 {
 	char	*dst;
@@ -21,12 +28,41 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int n)
 	
 	offset = (y * data->line_length + x * (data->bits_per_pixel / 8));
 	dst = data->addr + offset;
-	if (n == data->max_ite)
-		color = create_trgb(0, 0, 0, 0);
-	else if (n < data->max_ite / 2)
-		color = create_trgb(0, (255 * n / data->max_ite / 2), 0, (255 * n / data->max_ite / 2));
+	// if (data->color_chan == 1)
+	// {
+	// 	if (n == data->max_ite)
+	// 		color = create_trgb(0, 0, 0, 0);
+	// 	else if (n < data->max_ite / 2)
+	// 		color = create_trgb(0, 255 * n / data->max_ite / 2, 0, 255 * n / data->max_ite / 2);
+	// 	else
+	// 		color = create_trgb(0, 255, 255 * (n - data->max_ite /2) / data->max_ite/ 2, 255);
+	// } 
+	// else
+	if (data->color_chan == 1)
+	{
+		if (n == data->max_ite)
+			color = create_trgb(0, 0, 0, 0);
+		// else if (n < data->max_ite / 2)
+		// 	color = create_trgb(0, 255 -(255 * n / data->max_ite / 2), 0, (255 * n / data->max_ite / 2));
+		else
+			color = create_trgb(0, 255 -(255 * n / data->max_ite / 2), 255 -(255 * n / data->max_ite / 2), 255 -(255 * n / data->max_ite / 2));
+	}
+	else if (data->color_chan == 2)
+	{
+		if (n == data->max_ite)
+			color = create_trgb(0, 0, 0, 0);
+		else
+			color = create_trgb(0,(255 * n / data->max_ite / 2), (255 * n / data->max_ite / 2), (255 * n / data->max_ite / 2));
+	}
 	else
-		color = create_trgb(0, 255, (255 * (n - data->max_ite /2) / data->max_ite/ 2), 255);
+	{
+		if (n == data->max_ite)
+			color = create_trgb(0, 0, 0, 0);
+		// else if (n < data->max_ite / 2)
+		// 	color = create_trgb(0, 255 -(255 * n / data->max_ite / 2), 0, (255 * n / data->max_ite / 2));
+		else
+			color = create_trgb(0, 0, 255 -(255 * n / data->max_ite / 2), 255 -(255 * n / data->max_ite / 2));
+	}
 	*(unsigned int	*)dst = color;
 }
 
@@ -55,6 +91,8 @@ static void instructions(t_data *data)
 	mlx_string_put(data->mlx_ptr, data->win_ptr, WIDTH, 160, 0x00FFFFFF
 	,"-S-key: max_iterations down");
 	mlx_string_put(data->mlx_ptr, data->win_ptr, WIDTH, 180, 0x00FFFFFF
+	,"-D-key: change coloring");
+	mlx_string_put(data->mlx_ptr, data->win_ptr, WIDTH, 200, 0x00FFFFFF
 	,"-Escape-key: close window");
 }
 
