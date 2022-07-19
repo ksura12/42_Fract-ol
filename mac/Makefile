@@ -6,7 +6,7 @@
 #    By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/07 09:24:12 by ksura             #+#    #+#              #
-#    Updated: 2022/07/19 16:29:07 by ksura            ###   ########.fr        #
+#    Updated: 2022/07/19 17:00:18 by ksura            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,8 @@ LIBFT_DIRECTORY = ./libft
 FT_INC	= -I ./libft/ -I ./mlx/
 FT_LNK	= ./libft/libft.a
 
+GREEN = \033[0;32m
+RED = \033[0;31m
 
 SRC := main.c mandelbrot.c colors.c moves.c zoom.c drawing.c\
 		julia.c burning_ship.c my_pixel.c tools.c
@@ -36,23 +38,24 @@ OBJECTS_PREF := $(addprefix $(OBJDIR), $(OBJS))
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJECTS_PREF) $(OBJDIR)
-	$(CC) $(FLAGS) $(OBJECTS_PREF) $(LIBRARIES) -I$(HEADER) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
-	@echo "$(NAME) was created"
+	@$(CC) $(FLAGS) $(OBJECTS_PREF) $(LIBRARIES) -I$(HEADER) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	@echo "$(GREEN)$(NAME) was created"
 	
 $(LIBFT):
-	cd ./$(LIBFT_DIRECTORY) && make all
+	@cd ./$(LIBFT_DIRECTORY) && make all
 	
 $(OBJECTS_PREF): build/%.o : src/%.c
 	@mkdir -p $(OBJDIR)
-	$(CC) $(CFLAGS) -c $< -o $@ -I$(HEADER) $(INCLUDES)
+	@$(CC) $(CFLAGS) -c $< -o $@ -I$(HEADER) $(INCLUDES)
 
 clean:
-	cd ./$(LIBFT_DIRECTORY) && make clean
-	rm -rf $(OBJDIR)
+	@cd ./$(LIBFT_DIRECTORY) && make clean
+	@rm -rf $(OBJDIR)
 
 fclean: clean
-	cd ./$(LIBFT_DIRECTORY) && make fclean
-	rm -f $(NAME)
+	@cd ./$(LIBFT_DIRECTORY) && make fclean
+	@rm -f $(NAME)
+	@echo "$(RED)$(NAME) was deleted"
 
 re: fclean all
 

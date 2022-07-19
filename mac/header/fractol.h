@@ -6,7 +6,7 @@
 /*   By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 09:09:05 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/19 16:37:40 by ksura            ###   ########.fr       */
+/*   Updated: 2022/07/19 16:50:37 by ksura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@
 # define MLX_ERROR 1
 
 # define KEY_LEFT_CLICK		1
+# define KEY_RIGHT_CLICK	2
 # define KEY_SCROLL_UP		4
 # define KEY_SCROLL_DOWN	5
 # define KEY_SPACE			49
