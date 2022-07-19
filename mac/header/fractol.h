@@ -6,7 +6,7 @@
 /*   By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 09:09:05 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/19 09:27:51 by ksura            ###   ########.fr       */
+/*   Updated: 2022/07/19 15:18:51 by ksura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ typedef struct	s_data {
 	double	max_re;
 	double	min_i;
 	double	max_i;
+	double	z_re;
+	double	z_i;
 	int		mouse_x;
 	int		mouse_y;
 	double	zoom;
@@ -102,8 +104,9 @@ int get_b(int trgb);
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int		put_img(t_data *data);
-void	mandelbrot(t_data *data, int x, int y, double c_re, double c_i);
-void	julia(t_data *data, int x, int y, double z_re, double z_i);
+void	mandelbrot(t_data *data, int x, int y);
+void	julia(t_data *data, int x, int y);
+void	burning_ship(t_data *data, int x, int y);
 
 //moves
 void	move_left(t_data *data);

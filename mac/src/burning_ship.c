@@ -1,28 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandelbrot.c                                       :+:      :+:    :+:   */
+/*   burning_ship.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 18:47:34 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/19 14:45:11 by ksura            ###   ########.fr       */
+/*   Updated: 2022/07/19 14:45:49 by ksura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/fractol.h"
 
-t_clx	init_clx(double re, double im)
+void	burning_ship(t_data *data, int x, int y)
 {
-	t_clx	clx;
-
-	clx.re = re;
-	clx.im = im;
-	return (clx);
-}
-
-void	mandelbrot(t_data *data, int x, int y)
-{	
 	int		n;
 	double	z_re;
 	double	z_i;
@@ -39,7 +30,7 @@ void	mandelbrot(t_data *data, int x, int y)
 			data->is_in_set = 0.0;
 			break ;
 		}
-		tmp = 2 * z_re * z_i + data->z_i;
+		tmp = 2 * fabs(z_re * z_i) + data->z_i;
 		z_re = z_re * z_re - z_i * z_i + data->z_re;
 		z_i = tmp;
 	}

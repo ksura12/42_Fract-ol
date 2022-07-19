@@ -6,7 +6,7 @@
 /*   By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 09:40:10 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/19 10:39:24 by ksura            ###   ########.fr       */
+/*   Updated: 2022/07/19 14:21:37 by ksura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,8 @@ t_data checkinput(int argc, char **argv, t_data *data)
 	if (argc == 1)
 	{
 		ft_printf("--- too few arguments, please choose a set ---\n");
-		ft_printf("-m	Mandelbrot\n-j	Julia\n");
+		ft_printf("--- ./fractol -[fractal of choice] ---\n");
+		ft_printf("m	Mandelbrot\nj	Julia\nb	Burning ship\n");
 		exit (0);
 	}
 	else if (argc > 2)
@@ -108,11 +109,13 @@ t_data checkinput(int argc, char **argv, t_data *data)
 			data->fractol = 1;
 		else if (ft_strequ(argv[1], "-j"))
 			data->fractol = 2;
+		else if (ft_strequ(argv[1], "-b"))
+			data->fractol = 3;
 		else
 		{
 			ft_printf("---check your input---\n");
 			ft_printf("---please choose a set---\n");
-			ft_printf("-m	Mandelbrot\n-j	Julia\n");
+			ft_printf("-m	Mandelbrot\n-j	Julia\n-b	Burning ship\n");
 			free(data->mlx_ptr);
 			exit (0);
 		}
