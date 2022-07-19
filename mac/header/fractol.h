@@ -6,7 +6,7 @@
 /*   By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 09:09:05 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/19 16:50:37 by ksura            ###   ########.fr       */
+/*   Updated: 2022/07/19 17:12:05 by ksura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,12 @@
 # include <stdlib.h>
 
 # ifdef __APPLE__ // should work in linux and mac headers
-# include <OpenGL/gl.h> //OS x libs
-# include <OpenGL/glu.h>
-# include <GLUT/glut.h>
+#  include<OpenGL/gl.h>//OS x libs
+#  include <OpenGL/glu.h>
+#  include <GLUT/glut.h>
 # else
-#include <GL/glut.h>
+#  include <GL/glut.h>
+#  include <mlx.h>
 # endif
 
 # define WIDTH			1400
