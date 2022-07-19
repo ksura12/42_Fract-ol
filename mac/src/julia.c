@@ -6,7 +6,7 @@
 /*   By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 08:54:06 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/19 14:36:28 by ksura            ###   ########.fr       */
+/*   Updated: 2022/07/19 15:44:25 by ksura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,10 @@ void	julia(t_data *data, int x, int y)
 		data->z_i = tmp;
 	}
 	my_mlx_pixel_put(data, x, y, n);
+}
+
+void	change_julia(int x, int y, t_data *data)
+{
+	data->kr = 4 * ((double)x / WIDTH - 0.5);
+	data->ki = 4 * ((double)(HEIGHT - y) / HEIGHT - 0.5);
 }
