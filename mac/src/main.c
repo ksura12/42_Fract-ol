@@ -6,7 +6,7 @@
 /*   By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 09:40:10 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/18 17:27:51 by ksura            ###   ########.fr       */
+/*   Updated: 2022/07/19 09:34:04 by ksura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,12 @@ void	value_start(t_data *data)
 {
 	data->max_ite = 80;
 	data->min_re = -2.0;
-	data->max_re = 1.0;
-	data->min_i = -1.5;
+	data->max_re = 1.7;
+	data->min_i = -2;
 	data->max_i = data->min_i + (data->max_re - data->min_re) * HEIGHT / WIDTH;
 	data->color_chan = 1;
+	data->kr = -0.766667;
+	data->ki = -0.090000;
 }
 
 t_data checkinput(int argc, char **argv, t_data *data)
@@ -104,6 +106,7 @@ t_data checkinput(int argc, char **argv, t_data *data)
 			ft_printf("---check your input---\n");
 			ft_printf("---please choose a set---\n");
 			ft_printf("-m	Mandelbrot\n-j	Julia\n");
+			free(data->mlx_ptr);
 			exit (0);
 		}
 			

@@ -6,7 +6,7 @@
 /*   By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 10:24:16 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/18 18:49:54 by ksura            ###   ########.fr       */
+/*   Updated: 2022/07/19 09:31:47 by ksura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,8 @@ static void	fractol(t_data *data, int x, int y, double c_re, double c_i)
 {
 	if (data->fractol == 1)
 		mandelbrot(data, x, y, c_re, c_i);
+	else if (data->fractol == 2)
+		julia(data, x, y, c_re, c_i);
 }
 static void instructions(t_data *data)
 {

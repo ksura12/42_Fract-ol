@@ -6,7 +6,7 @@
 /*   By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 09:09:05 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/18 17:28:17 by ksura            ###   ########.fr       */
+/*   Updated: 2022/07/19 09:27:51 by ksura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ typedef struct	s_data {
 	int		fractol;
 	int		max_ite;
 	int		color_chan;
+	double	kr;
+	double	ki;
 	
 }t_data;
 
@@ -101,6 +103,7 @@ int get_b(int trgb);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int		put_img(t_data *data);
 void	mandelbrot(t_data *data, int x, int y, double c_re, double c_i);
+void	julia(t_data *data, int x, int y, double z_re, double z_i);
 
 //moves
 void	move_left(t_data *data);
@@ -110,4 +113,5 @@ void	move_up(t_data *data);
 void	move_to_mouse(int x, int y, t_data *data);
 void	zoom(t_data *data, int x, int y);
 void	color_chan(t_data	*data);
+t_clx	init_clx(double re, double im);
 #endif
