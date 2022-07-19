@@ -6,7 +6,7 @@
 /*   By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 10:24:16 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/19 09:31:47 by ksura            ###   ########.fr       */
+/*   Updated: 2022/07/19 10:41:31 by ksura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,10 +110,6 @@ static void instructions(t_data *data)
 	, "---Instructions---");
 	mlx_string_put(data->mlx_ptr, data->win_ptr, WIDTH, 40, 0x00FFFFFF
 	,"-Arrow keys: move picture");
-	mlx_string_put(data->mlx_ptr, data->win_ptr, WIDTH, 60, 0x00FFFFFF
-	,"-Mouse-left-click: move left");
-	mlx_string_put(data->mlx_ptr, data->win_ptr, WIDTH, 80, 0x00FFFFFF
-	,"-Mouse-right-click: move right");
 	mlx_string_put(data->mlx_ptr, data->win_ptr, WIDTH, 100, 0x00FFFFFF
 	,"-Mouse-scroll-up: zoom in");
 	mlx_string_put(data->mlx_ptr, data->win_ptr, WIDTH, 120, 0x00FFFFFF
@@ -126,6 +122,10 @@ static void instructions(t_data *data)
 	,"-D-key: change coloring");
 	mlx_string_put(data->mlx_ptr, data->win_ptr, WIDTH, 200, 0x00FFFFFF
 	,"-Escape-key: close window");
+	mlx_string_put(data->mlx_ptr, data->win_ptr, WIDTH, 60, 0x00FFFFFF
+	,"-Mouse-left-click: change Julia");
+	mlx_string_put(data->mlx_ptr, data->win_ptr, WIDTH, 80, 0x00FFFFFF
+	,"-Mouse-right-click: init state");
 }
 
 int put_img(t_data *data)

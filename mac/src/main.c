@@ -6,7 +6,7 @@
 /*   By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 09:40:10 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/19 09:34:04 by ksura            ###   ########.fr       */
+/*   Updated: 2022/07/19 10:39:24 by ksura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,30 @@ int handle_keypress(int keysym, t_data *data)
 		color_chan(data);
 	return (0);
 }
+void	change_julia(int x, int y, t_data *data)
+{
+	data->kr = 4 * ((double)x / WIDTH - 0.5);
+	data->ki =4 * ((double)(HEIGHT - y) / HEIGHT - 0.5);
+}
+
+void	value_start(t_data *data)
+{
+	data->max_ite = 80;
+	data->min_re = -2.0;
+	data->max_re = 1.7;
+	data->min_i = -2;
+	data->max_i = data->min_i + (data->max_re - data->min_re) * HEIGHT / WIDTH;
+	data->color_chan = 1;
+	data->kr = -0.766667;
+	data->ki = -0.090000;
+}
 
 int mouse_events(int mouse_code, int x, int y, t_data *data)
 {
 	if (mouse_code == KEY_LEFT_CLICK)
-		move_to_mouse(x, y, data);
+		change_julia(x, y, data);
 	if (mouse_code == KEY_RIGHT_CLICK)
-		move_to_mouse(x, y, data);
+		value_start(data);
 	if (mouse_code == KEY_SCROLL_DOWN)
 	{
 		data->zoom = 1.5;
@@ -63,17 +80,7 @@ int mouse_events(int mouse_code, int x, int y, t_data *data)
 	}
 	return (0);
 }
-void	value_start(t_data *data)
-{
-	data->max_ite = 80;
-	data->min_re = -2.0;
-	data->max_re = 1.7;
-	data->min_i = -2;
-	data->max_i = data->min_i + (data->max_re - data->min_re) * HEIGHT / WIDTH;
-	data->color_chan = 1;
-	data->kr = -0.766667;
-	data->ki = -0.090000;
-}
+
 
 t_data checkinput(int argc, char **argv, t_data *data)
 {
@@ -141,6 +148,8 @@ int	main(int argc, char **argv)
 		mlx_hook(img.win_ptr, 2, 0, handle_keypress, &img);
 		mlx_hook(img.win_ptr, 17, 0, close_win, &img);
 		mlx_mouse_hook(img.win_ptr, mouse_events, &img);
+		// if (ft_strequ(argv[1], "-j"))
+		// 	mlx_hook(img.win_ptr, 6, 0, change_julia, &img);
 		mlx_loop(img.mlx_ptr);
 		
 		// destroing window, exit code if
