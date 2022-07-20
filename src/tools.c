@@ -6,11 +6,23 @@
 /*   By: ksura@student.42wolfsburg.de <ksura@studen +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 15:44:56 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/20 16:44:21 by ksura@student.42 ###   ########.fr       */
+/*   Updated: 2022/07/20 18:07:22 by ksura@student.42 ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/fractol.h"
+
+void	value_start(t_data *data)
+{
+	data->max_ite = 80;
+	data->min_re = -2.0;
+	data->max_re = 1.7;
+	data->min_i = -2;
+	data->max_i = data->min_i + (data->max_re - data->min_re) * HEIGHT / WIDTH;
+	data->color_chan = 1;
+	data->kr = -0.766667;
+	data->ki = -0.090000;
+}
 
 int	handle_keypress(int keysym, t_data *data)
 {
@@ -30,27 +42,15 @@ int	handle_keypress(int keysym, t_data *data)
 		data->max_ite -= 10;
 	if (keysym == KEY_D)
 		color_chan(data);
+	if (keysym == KEY_SPACE)
+		value_start(data);
 	return (0);
-}
-
-void	value_start(t_data *data)
-{
-	data->max_ite = 80;
-	data->min_re = -2.0;
-	data->max_re = 1.7;
-	data->min_i = -2;
-	data->max_i = data->min_i + (data->max_re - data->min_re) * HEIGHT / WIDTH;
-	data->color_chan = 1;
-	data->kr = -0.766667;
-	data->ki = -0.090000;
 }
 
 int	mouse_events(int mouse_code, int x, int y, t_data *data)
 {
 	if (mouse_code == KEY_LEFT_CLICK)
 		change_julia(x, y, data);
-	if (mouse_code == KEY_RIGHT_CLICK)
-		value_start(data);
 	if (mouse_code == KEY_SCROLL_DOWN)
 	{
 		data->zoom = 1.5;

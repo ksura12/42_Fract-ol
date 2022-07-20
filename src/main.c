@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+        */
+/*   By: ksura@student.42wolfsburg.de <ksura@studen +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 09:40:10 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/19 16:09:20 by ksura            ###   ########.fr       */
+/*   Updated: 2022/07/20 18:07:16 by ksura@student.42 ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	main(int argc, char **argv)
 			return (MLX_ERROR);
 		}
 		mlx_loop_hook(img.mlx_ptr, &put_img, &img);
-		mlx_hook(img.win_ptr, 2, 0, handle_keypress, &img);
+		mlx_key_hook(img.win_ptr, handle_keypress, &img);
 		mlx_hook(img.win_ptr, 17, 0, close_win, &img);
 		mlx_mouse_hook(img.win_ptr, mouse_events, &img);
 		mlx_loop(img.mlx_ptr);

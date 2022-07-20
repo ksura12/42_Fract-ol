@@ -6,7 +6,7 @@
 /*   By: ksura@student.42wolfsburg.de <ksura@studen +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 09:09:05 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/20 17:09:45 by ksura@student.42 ###   ########.fr       */
+/*   Updated: 2022/07/20 17:58:33 by ksura@student.42 ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,18 +59,18 @@ enum e_keys
 	KEY_SCROLL_UP = 4,
 	KEY_SCROLL_DOWN = 5,
 	KEY_SPACE = 32,
-	KEY_R = 15,
+	KEY_R = 114,
 	KEY_ESC = 65307,
-	KEY_PLUS = 24,
-	KEY_MINUS = 27,
-	KEY_UP = 111,
-	KEY_DOWN = 116,
-	KEY_LEFT = 113,
-	KEY_RIGHT = 114,
-	KEY_C = 8,
+	KEY_PLUS = 43,
+	KEY_MINUS = 45,
+	KEY_UP = 65362,
+	KEY_DOWN = 65364,
+	KEY_LEFT = 65361,
+	KEY_RIGHT = 65363,
+	KEY_C = 99,
 	KEY_A = 97,
 	KEY_S = 115,
-	KEY_D = 32,
+	KEY_D = 100,
 	KEY_W = 119,
 };
 
