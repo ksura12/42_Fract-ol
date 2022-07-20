@@ -6,7 +6,7 @@
 /*   By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 15:44:56 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/19 16:06:08 by ksura            ###   ########.fr       */
+/*   Updated: 2022/07/20 15:55:23 by ksura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,11 @@ static void	choose_fract(char **argv, t_data *data)
 	value_start(data);
 	if (data->mlx_ptr == NULL)
 		exit (1);
-	if (ft_strequ(argv[1], "-m"))
+	if (ft_strequ(*argv, "-m"))
 		data->fractol = 1;
-	else if (ft_strequ(argv[1], "-j"))
+	else if (ft_strequ(*argv, "-j"))
 		data->fractol = 2;
-	else if (ft_strequ(argv[1], "-b"))
+	else if (ft_strequ(*argv, "-b"))
 		data->fractol = 3;
 	else
 	{
