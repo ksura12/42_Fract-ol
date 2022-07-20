@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ksura@student.42wolfsburg.de <ksura@studen +#+  +:+       +#+         #
+#    By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/07 09:24:12 by ksura             #+#    #+#              #
-#    Updated: 2022/07/20 10:50:05 by ksura@student.42 ###   ########.fr        #
+#    Updated: 2022/07/20 17:26:53 by ksura            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
