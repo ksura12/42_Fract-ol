@@ -6,32 +6,32 @@
 /*   By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 09:09:05 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/20 12:10:25 by ksura            ###   ########.fr       */
+/*   Updated: 2022/07/20 13:05:36 by ksura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# include "../mlx/mlx.h"
 # include "../libft/libft.h"
 # include <math.h>
 # include <stdlib.h>
 
-#ifdef __APPLE__ // should work in linux and mac headers
-#include <OpenGL/gl.h> //OS x libs
-#include <OpenGL/glu.h>
-#include <GLUT/glut.h>
-#else
-#include <GL/glut.h>
-#endif
+# ifdef __APPLE__ // should work in linux and mac headers
+#  include "../mlx/mlx.h"
+#  include <OpenGL/gl.h>//OS x libs
+#  include <OpenGL/glu.h>
+#  include <GLUT/glut.h>
+# else
+#  include <GL/glut.h>
+#  include <mlx.h>
+# endif
 
 # define WIDTH			1400
 # define HEIGHT 		1400
 # define MAX_ITERATIONS	80
 
-
-#define MLX_ERROR 1
+# define MLX_ERROR 1
 
 # define KEY_LEFT_CLICK		1
 # define KEY_RIGHT_CLICK	2
@@ -58,7 +58,7 @@ typedef struct s_clx
 	double					im;
 }							t_clx;
 
-typedef struct	s_data {
+typedef struct s_data {
 	void	*mlx_ptr;
 	void	*win_ptr;
 	void	*img;
@@ -68,6 +68,8 @@ typedef struct	s_data {
 	double	max_re;
 	double	min_i;
 	double	max_i;
+	double	z_re;
+	double	z_i;
 	int		mouse_x;
 	int		mouse_y;
 	double	zoom;
@@ -81,10 +83,9 @@ typedef struct	s_data {
 	int		color_chan;
 	double	kr;
 	double	ki;
-	
 }t_data;
 
-typedef struct	s_fractol {
+typedef struct s_fractol {
 	void	*mlx;
 	void	*win;
 	double	min_re;
@@ -93,17 +94,18 @@ typedef struct	s_fractol {
 	double	max_i;
 }	t_fractol;
 
-
-int create_trgb(int t, int r, int g, int b);
-int get_t(int trgb);
-int get_r(int trgb);
-int get_g(int trgb);
-int get_b(int trgb);
+int		create_trgb(int t, int r, int g, int b);
+int		get_t(int trgb);
+int		get_r(int trgb);
+int		get_g(int trgb);
+int		get_b(int trgb);
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int		put_img(t_data *data);
-void	mandelbrot(t_data *data, int x, int y, double c_re, double c_i);
-void	julia(t_data *data, int x, int y, double z_re, double z_i);
+void	mandelbrot(t_data *data, int x, int y);
+void	julia(t_data *data, int x, int y);
+void	change_julia(int x, int y, t_data *data);
+void	burning_ship(t_data *data, int x, int y);
 
 //moves
 void	move_left(t_data *data);
@@ -114,4 +116,10 @@ void	move_to_mouse(int x, int y, t_data *data);
 void	zoom(t_data *data, int x, int y);
 void	color_chan(t_data	*data);
 t_clx	init_clx(double re, double im);
+int		close_win(void *data);
+t_data	checkinput(int argc, char **argv, t_data *data);
+int		mouse_events(int mouse_code, int x, int y, t_data *data);
+void	value_start(t_data *data);
+int		handle_keypress(int keysym, t_data *data);
+
 #endif

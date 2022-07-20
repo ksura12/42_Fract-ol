@@ -6,11 +6,11 @@
 /*   By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 18:47:34 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/19 08:54:53 by ksura            ###   ########.fr       */
+/*   Updated: 2022/07/19 14:45:11 by ksura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../header/fractol.h"
+#include "../header/fractol.h"
 
 t_clx	init_clx(double re, double im)
 {
@@ -21,9 +21,9 @@ t_clx	init_clx(double re, double im)
 	return (clx);
 }
 
-void mandelbrot(t_data *data, int x, int y, double c_re, double c_i)
+void	mandelbrot(t_data *data, int x, int y)
 {	
-	int 	n;
+	int		n;
 	double	z_re;
 	double	z_i;
 	double	tmp;
@@ -37,11 +37,11 @@ void mandelbrot(t_data *data, int x, int y, double c_re, double c_i)
 		if ((z_re * z_re + z_i * z_i) > 4.0)
 		{
 			data->is_in_set = 0.0;
-			break;
+			break ;
 		}
-		tmp = 2 * z_re * z_i + c_i;
-		z_re = z_re *z_re - z_i * z_i + c_re;
+		tmp = 2 * z_re * z_i + data->z_i;
+		z_re = z_re * z_re - z_i * z_i + data->z_re;
 		z_i = tmp;
 	}
-	my_mlx_pixel_put(data, x, y , n);
+	my_mlx_pixel_put(data, x, y, n);
 }

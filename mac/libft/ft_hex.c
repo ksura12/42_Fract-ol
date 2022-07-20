@@ -6,11 +6,12 @@
 /*   By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 11:24:25 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/19 16:28:38 by ksura            ###   ########.fr       */
+/*   Updated: 2022/07/20 13:05:14 by ksura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdint.h>
 
 /*
 DESCRIPTION
