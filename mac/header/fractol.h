@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+        */
+/*   By: ksura@student.42wolfsburg.de <ksura@studen +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 09:09:05 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/19 17:12:05 by ksura            ###   ########.fr       */
+/*   Updated: 2022/07/20 09:28:50 by ksura@student.42 ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# include "../mlx/mlx.h"
 # include "../libft/libft.h"
 # include <math.h>
 # include <stdlib.h>
 
 # ifdef __APPLE__ // should work in linux and mac headers
-#  include<OpenGL/gl.h>//OS x libs
+#  include "../mlx/mlx.h"
+#  include <OpenGL/gl.h>//OS x libs
 #  include <OpenGL/glu.h>
 #  include <GLUT/glut.h>
 # else
