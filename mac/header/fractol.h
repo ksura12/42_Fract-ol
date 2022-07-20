@@ -6,7 +6,7 @@
 /*   By: ksura@student.42wolfsburg.de <ksura@studen +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 09:09:05 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/20 09:28:50 by ksura@student.42 ###   ########.fr       */
+/*   Updated: 2022/07/20 11:18:19 by ksura@student.42 ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,27 +30,47 @@
 # define WIDTH			1400
 # define HEIGHT 		1400
 # define MAX_ITERATIONS	80
-
 # define MLX_ERROR 1
 
-# define KEY_LEFT_CLICK		1
-# define KEY_RIGHT_CLICK	2
-# define KEY_SCROLL_UP		4
-# define KEY_SCROLL_DOWN	5
-# define KEY_SPACE			49
-# define KEY_R				15
-# define KEY_ESC			53
-# define KEY_PLUS			24
-# define KEY_MINUS			27
-# define KEY_UP				126
-# define KEY_DOWN			125
-# define KEY_LEFT			123
-# define KEY_RIGHT			124
-# define KEY_C				8
-# define KEY_A				0
-# define KEY_S				1
-# define KEY_D				2
-# define KEY_W				13
+# ifdef __APPLE__
+#  define KEY_LEFT_CLICK		1
+#  define KEY_RIGHT_CLICK	2
+#  define KEY_SCROLL_UP		4
+#  define KEY_SCROLL_DOWN	5
+#  define KEY_SPACE			49
+#  define KEY_R				15
+#  define KEY_ESC			53
+#  define KEY_PLUS			24
+#  define KEY_MINUS			27
+#  define KEY_UP				126
+#  define KEY_DOWN			125
+#  define KEY_LEFT			123
+#  define KEY_RIGHT			124
+#  define KEY_C				8
+#  define KEY_A				0
+#  define KEY_S				1
+#  define KEY_D				2
+#  define KEY_W				13
+# else
+#  define KEY_LEFT_CLICK		1
+#  define KEY_RIGHT_CLICK	2
+#  define KEY_SCROLL_UP		4
+#  define KEY_SCROLL_DOWN	5
+#  define KEY_SPACE			49
+#  define KEY_R				15
+#  define KEY_ESC			65307
+#  define KEY_PLUS			24
+#  define KEY_MINUS			27
+#  define KEY_UP				12
+#  define KEY_DOWN			125
+#  define KEY_LEFT			123
+#  define KEY_RIGHT			124
+#  define KEY_C				8
+#  define KEY_A				97
+#  define KEY_S				115
+#  define KEY_D				32
+#  define KEY_W				17
+# endif
 
 typedef struct s_clx
 {
