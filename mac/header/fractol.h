@@ -6,7 +6,7 @@
 /*   By: ksura@student.42wolfsburg.de <ksura@studen +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 09:09:05 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/20 11:18:19 by ksura@student.42 ###   ########.fr       */
+/*   Updated: 2022/07/20 17:09:45 by ksura@student.42 ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,24 +52,28 @@
 #  define KEY_D				2
 #  define KEY_W				13
 # else
-#  define KEY_LEFT_CLICK		1
-#  define KEY_RIGHT_CLICK	2
-#  define KEY_SCROLL_UP		4
-#  define KEY_SCROLL_DOWN	5
-#  define KEY_SPACE			49
-#  define KEY_R				15
-#  define KEY_ESC			65307
-#  define KEY_PLUS			24
-#  define KEY_MINUS			27
-#  define KEY_UP				12
-#  define KEY_DOWN			125
-#  define KEY_LEFT			123
-#  define KEY_RIGHT			124
-#  define KEY_C				8
-#  define KEY_A				97
-#  define KEY_S				115
-#  define KEY_D				32
-#  define KEY_W				17
+enum e_keys
+{
+	KEY_LEFT_CLICK = 1,
+	KEY_RIGHT_CLICK = 2,
+	KEY_SCROLL_UP = 4,
+	KEY_SCROLL_DOWN = 5,
+	KEY_SPACE = 32,
+	KEY_R = 15,
+	KEY_ESC = 65307,
+	KEY_PLUS = 24,
+	KEY_MINUS = 27,
+	KEY_UP = 111,
+	KEY_DOWN = 116,
+	KEY_LEFT = 113,
+	KEY_RIGHT = 114,
+	KEY_C = 8,
+	KEY_A = 97,
+	KEY_S = 115,
+	KEY_D = 32,
+	KEY_W = 119,
+};
+
 # endif
 
 typedef struct s_clx
