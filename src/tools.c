@@ -6,7 +6,7 @@
 /*   By: ksura@student.42wolfsburg.de <ksura@studen +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 15:44:56 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/20 18:07:22 by ksura@student.42 ###   ########.fr       */
+/*   Updated: 2022/07/20 19:14:57 by ksura@student.42 ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,11 @@ int	mouse_events(int mouse_code, int x, int y, t_data *data)
 	return (0);
 }
 
-static void	choose_fract(char **argv, t_data *data)
+static t_data	*choose_fract(char **argv)
 {
+	t_data	*data;
+	
+	data = ft_calloc(1, sizeof(t_data));
 	data->mlx_ptr = mlx_init();
 	value_start(data);
 	if (data->mlx_ptr == NULL)
@@ -85,10 +88,13 @@ static void	choose_fract(char **argv, t_data *data)
 		ft_printf("-m	Mandelbrot\n-j	Julia\n-b	Burning ship\n");
 		exit (0);
 	}
+	return (data);
 }
 
-t_data	checkinput(int argc, char **argv, t_data *data)
+t_data	*checkinput(int argc, char **argv)
 {
+	t_data	*data;
+	
 	if (argc == 1)
 	{
 		ft_printf("--- too few arguments, please choose a set ---\n");
@@ -102,6 +108,6 @@ t_data	checkinput(int argc, char **argv, t_data *data)
 		exit (0);
 	}
 	else
-		choose_fract(&argv[1], data);
-	return (*data);
+		data = choose_fract(&argv[1]);
+	return (data);
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+         #
+#    By: ksura@student.42wolfsburg.de <ksura@studen +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/07 09:24:12 by ksura             #+#    #+#              #
-#    Updated: 2022/07/20 17:26:53 by ksura            ###   ########.fr        #
+#    Updated: 2022/07/20 18:50:51 by ksura@student.42 ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,22 +26,24 @@ MINILIB_DIR = ./mlx
 FT_INC	= -I ./libft/ -I ./mlx/
 FT_LNK	= ./libft/libft.a
 
+SRC := main.c mandelbrot.c colors.c moves.c zoom.c drawing.c\
+		julia.c burning_ship.c my_pixel.c tools.c
+
 OS = $(shell uname)
 ifeq ($(OS), Linux)
 	LIBS += -Lmlx -lmlx -L/usr/lib -Imlx -lX11 -lXext -lz 
 	OBLI += -I/usr/inlcude -Imlx
-	SRCS_NAMES += destroy_linux
+	SRC += destroy_linux.c
 endif
 ifeq ($(OS), Darwin)
 	LIBS += -Lmlx -lmlx -framework OpenGL -framework AppKit
-	SRCS_NAMES += destroy_mac
+	SRC += destroy_mac.c
 endif
 
 GREEN = \033[0;32m
 RED = \033[0;31m
 
-SRC := main.c mandelbrot.c colors.c moves.c zoom.c drawing.c\
-		julia.c burning_ship.c my_pixel.c tools.c
+
 
 OBJS = ${SRC:.c=.o}
 OBJECTS_PREF := $(addprefix $(OBJDIR), $(OBJS))

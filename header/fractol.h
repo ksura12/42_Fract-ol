@@ -6,7 +6,7 @@
 /*   By: ksura@student.42wolfsburg.de <ksura@studen +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 09:09:05 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/20 17:58:33 by ksura@student.42 ###   ########.fr       */
+/*   Updated: 2022/07/20 19:15:11 by ksura@student.42 ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,9 +141,10 @@ void	zoom(t_data *data, int x, int y);
 void	color_chan(t_data	*data);
 t_clx	init_clx(double re, double im);
 int		close_win(void *data);
-t_data	checkinput(int argc, char **argv, t_data *data);
+t_data	*checkinput(int argc, char **argv);
 int		mouse_events(int mouse_code, int x, int y, t_data *data);
 void	value_start(t_data *data);
 int		handle_keypress(int keysym, t_data *data);
+void	data_destroy(t_data *data);
 
 #endif
