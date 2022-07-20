@@ -6,7 +6,7 @@
 /*   By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 09:09:05 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/19 09:27:51 by ksura            ###   ########.fr       */
+/*   Updated: 2022/07/20 12:10:25 by ksura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FRACTOL_H
 
 # include "../mlx/mlx.h"
-# include "../libft/header/libftprintf.h"
+# include "../libft/libft.h"
 # include <math.h>
 # include <stdlib.h>
 

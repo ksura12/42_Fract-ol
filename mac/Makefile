@@ -6,7 +6,7 @@
 #    By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/07 09:24:12 by ksura             #+#    #+#              #
-#    Updated: 2022/07/19 09:07:25 by ksura            ###   ########.fr        #
+#    Updated: 2022/07/20 12:11:04 by ksura            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ OBJDIR := build/
 LIBFT = $(LIBFT_DIRECTORY)/libft.a
 LIBFT_DIRECTORY = ./libft
 FT_INC	= -I ./libft/ -I ./mlx/
-FT_LNK	= ./libft/libftprintf.a
+FT_LNK	= ./libft/libft.a
 
 
 
