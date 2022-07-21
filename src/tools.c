@@ -6,7 +6,7 @@
 /*   By: ksura@student.42wolfsburg.de <ksura@studen +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 15:44:56 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/20 19:14:57 by ksura@student.42 ###   ########.fr       */
+/*   Updated: 2022/07/21 08:36:12 by ksura@student.42 ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	value_start(t_data *data)
 int	handle_keypress(int keysym, t_data *data)
 {
 	if (keysym == KEY_ESC)
-		exit (0);
+		data_destroy(data);
 	if (keysym == KEY_RIGHT)
 		move_right(data);
 	if (keysym == KEY_LEFT)
@@ -69,7 +69,7 @@ int	mouse_events(int mouse_code, int x, int y, t_data *data)
 static t_data	*choose_fract(char **argv)
 {
 	t_data	*data;
-	
+
 	data = ft_calloc(1, sizeof(t_data));
 	data->mlx_ptr = mlx_init();
 	value_start(data);
@@ -94,7 +94,7 @@ static t_data	*choose_fract(char **argv)
 t_data	*checkinput(int argc, char **argv)
 {
 	t_data	*data;
-	
+
 	if (argc == 1)
 	{
 		ft_printf("--- too few arguments, please choose a set ---\n");

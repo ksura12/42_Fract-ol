@@ -6,7 +6,7 @@
 /*   By: ksura@student.42wolfsburg.de <ksura@studen +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 09:40:10 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/20 19:12:17 by ksura@student.42 ###   ########.fr       */
+/*   Updated: 2022/07/21 08:35:57 by ksura@student.42 ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,5 @@ int	main(int argc, char **argv)
 		mlx_hook(img->win_ptr, 17, 0, close_win, img);
 		mlx_mouse_hook(img->win_ptr, mouse_events, img);
 		mlx_loop(img->mlx_ptr);
-		// if (img.win_ptr == NULL)
-		// {
-		// 	free(img.mlx);
-		// 	exit (0);
-		// }
-		return (0);
 	}
 }

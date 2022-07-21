@@ -6,7 +6,7 @@
 /*   By: ksura@student.42wolfsburg.de <ksura@studen +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 09:09:05 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/20 19:15:11 by ksura@student.42 ###   ########.fr       */
+/*   Updated: 2022/07/21 08:36:47 by ksura@student.42 ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@
 #  define KEY_D				2
 #  define KEY_W				13
 # else
+
 enum e_keys
 {
 	KEY_LEFT_CLICK = 1,
