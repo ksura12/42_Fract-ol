@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ksura@student.42wolfsburg.de <ksura@studen +#+  +:+       +#+        */
+/*   By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 09:40:10 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/21 08:35:57 by ksura@student.42 ###   ########.fr       */
+/*   Updated: 2022/07/21 10:04:05 by ksura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main(int argc, char **argv)
 	{
 		img = checkinput(argc, argv);
 		img->win_ptr = mlx_new_window(img->mlx_ptr, WIDTH
-				+ 350, HEIGHT, "First Window");
+				+ 350, HEIGHT, "Fract-ol");
 		if (img->win_ptr == NULL)
 			data_destroy(img);
 		mlx_loop_hook(img->mlx_ptr, &put_img, img);
