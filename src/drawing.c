@@ -6,7 +6,7 @@
 /*   By: ksura <ksura@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 10:24:16 by ksura             #+#    #+#             */
-/*   Updated: 2022/07/19 15:37:05 by ksura            ###   ########.fr       */
+/*   Updated: 2022/07/20 18:11:34 by ksura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static void	instructions(t_data *data)
 	mlx_string_put(data->mlx_ptr, data->win_ptr, WIDTH, 60, 0x00FFFFFF,
 		"-Mouse-left-click: change Julia");
 	mlx_string_put(data->mlx_ptr, data->win_ptr, WIDTH, 80, 0x00FFFFFF,
-		"-Mouse-right-click: init state");
+		"-Space: init state");
 }
 
 int	put_img(t_data *d)
